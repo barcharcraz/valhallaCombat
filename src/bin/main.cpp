@@ -159,7 +159,8 @@ extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []() {
 	v.PluginVersion(Plugin::VERSION);
 	v.PluginName(Plugin::NAME);
 
-	v.UsesAddressLibrary(true);
+	v.UsesAddressLibrary();
+	v.UsesStructsPost629();
 	v.CompatibleVersions({ SKSE::RUNTIME_SSE_LATEST });
 
 	return v;
@@ -171,7 +172,6 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
     #ifndef NDEBUG
 	while (!IsDebuggerPresent()) { Sleep(100); }
 #endif
-	REL::Module::reset();
 	InitializeLog();
 	logger::info("{} v{}"sv, Plugin::NAME, Plugin::VERSION.string());
 

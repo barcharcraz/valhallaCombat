@@ -29,7 +29,7 @@ used to block stamina regen in certain situations.*/
 		bool bResult = _HasFlags1(a_this, a_flags);  // is sprinting?
 
 		if (!bResult) {
-			RE::Actor* actor = SKSE::stl::adjust_pointer<RE::Actor>(a_this, -0xB8);
+			RE::Actor* actor = SKSE::stl::adjust_pointer<RE::Actor>(a_this, -0xC0);
 			auto attackState = actor->AsActorState()->GetAttackState();
 			if (actor != attackHandler::GetSingleton()->actorToRegenStamina) {
 				//if melee hit regen is needed, no need to disable regen.
